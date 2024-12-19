@@ -20,7 +20,7 @@ public class LinkedList {
         linkedList.addNode(30);
         linkedList.addNode(40);
         linkedList.printList();
-
+        linkedList.deleteMiddleNode();
         linkedList.removeNode(20);
         linkedList.printList();
 
@@ -53,6 +53,27 @@ public class LinkedList {
         System.out.println();
     }
 
+    private void deleteMiddleNode() { 
+        if(head == null || head.next == null) { 
+            return; 
+            // No middle node to delete 
+        }
+        Node slow = head; 
+        Node fast = head; 
+        Node prev = null; 
+        // Use two-pointer technique to find the middle node 
+        while (fast != null && fast.next != null) { 
+            fast = fast.next.next; 
+            prev = slow; 
+            slow = slow.next; 
+        }
+        // 'slow' is now pointing to the middle node 
+        if (prev != null) { 
+            prev.next = slow.next; 
+            // Delete the middle node 
+        }
+    }
+    
     private void addNode(int val) {
         Node newNode = new Node(val);
         if (head == null) {

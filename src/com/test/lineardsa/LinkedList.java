@@ -53,7 +53,7 @@ public class LinkedList {
         System.out.println();
     }
 
-    private void deleteMiddleNode() { 
+    private Node deleteMiddleNode() { 
         if(head == null || head.next == null) { 
             return; 
             // No middle node to delete 
@@ -72,6 +72,7 @@ public class LinkedList {
             prev.next = slow.next; 
             // Delete the middle node 
         }
+        return head;
     }
     
     private void addNode(int val) {

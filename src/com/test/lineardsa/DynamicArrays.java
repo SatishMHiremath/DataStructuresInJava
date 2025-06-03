@@ -4,9 +4,11 @@ public class DynamicArrays {
 
 	int[] arr;
 	int size;
+	int capacity;
 	public DynamicArrays() {
 		arr = new int[5];
 		size = 0;
+		capacity = arr.length;
 	}
 
 	private int get(int index) throws Exception {
@@ -30,10 +32,18 @@ public class DynamicArrays {
 	}
 
 	private void add(int val) {
+		if(size == capacity) {
+		    resize();
+		}
 		arr[++size] = val;
 		System.out.println("Add item into array : "+arr[size]);
 	}
 
+	public void resize() {
+		capacity*=2;
+		arr = Arrays.copyOf(arr, capacity);
+	}
+	
 	public static void main(String[] args) {
 		DynamicArrays arrays = new DynamicArrays();
 		arrays.add(10);
@@ -64,7 +74,7 @@ public class DynamicArrays {
 
 	private void set(int index, int value) throws Exception {
 		if(index < 0 || index>=size) {
-			throw new Exception("œndex out of bound exception");
+			throw new Exception("√èndex out of bound exception");
 		}
 		arr[index]=value;
 		System.out.println("Set element at index"+index+" for element "+arr[index]);
